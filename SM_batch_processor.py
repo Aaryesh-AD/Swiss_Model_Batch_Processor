@@ -1,4 +1,8 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import os
+import sys
 import gzip
 import shutil
 import argparse
@@ -8,6 +12,25 @@ import re
 import concurrent.futures
 import threading
 import json
+
+# Determine the correct path for config.json
+if getattr(sys, 'frozen', False):
+    BASE_DIR = os.path.dirname(sys.executable)  # When running as an .exe
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # When running as a script
+
+CONFIG_FILE = os.path.join(BASE_DIR, "config.json")
+
+if not os.path.exists(CONFIG_FILE):
+    raise FileNotFoundError(f"Configuration file not found: {CONFIG_FILE}")
+
+with open(CONFIG_FILE) as f:
+    config = json.load(f)
+
+API_KEY = config.get("API_KEY")
+if not API_KEY:
+    raise ValueError("API_KEY is missing in config.json.")
+
 
 with open("config.json") as f:
     config = json.load(f)
