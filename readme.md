@@ -43,7 +43,7 @@ Swiss-Model Batch Processor is a **Python-based automation tool** designed to **
 
 SwissModel requires an **API Key** for authentication. Follow these steps:
 
-1. Retrieve your **API Key/Token** from the [SwissModel Account Page](https://swissmodel.expasy.org/repository?query=token).
+1. Retrieve your **API Key/Token** from the [SwissModel Account Page](https://swissmodel.expasy.org/account).
 2. For the python CLI usage,  in the project directory, create a new file called `config.json` and add your API Key/Token:
 
    ```json
